@@ -146,23 +146,23 @@
         <h2 style="text-align: center; margin-bottom: -20px; margin-top: -100px;">Statistics</h2>
 
       <div class="statistics-container" style="padding: 20px;">
-        <div class="statistic-item">
-          <img src="./images/shows.png" alt="Icon 1" style="height: 200px; width: auto;">
-          <div class="counter" data-target="7000">0</div>
-          <h3>Shows</h3>
-        </div>
-    
-        <div class="statistic-item">
-          <img src="./images/international.png" alt="Icon 2" style="height: 200px; width: auto;">
-          <div class="counter" data-target="30">0</div>
-          <h3>Countries Travelled for Shows</h3>
-        </div>
-    
-        <div class="statistic-item">
-          <img src="./images/expericne.png" alt="Icon 3" style="height: 200px; width: auto;">
-          <div class="counter" data-target="22">0</div>
-          <h3>Years of Experience</h3>
-        </div>
+  <div class="statistic-item">
+    <img src="./images/shows.png" alt="Icon 1" style="height: 200px; width: auto;">
+    <div class="counter" data-target="7000">0</div>
+    <h3>Shows</h3>
+  </div>
+
+  <div class="statistic-item">
+    <img src="./images/international.png" alt="Icon 2" style="height: 200px; width: auto;">
+    <div class="counter" data-target="30">0</div>
+    <h3>Countries Travelled for Shows</h3>
+  </div>
+
+  <div class="statistic-item">
+    <img src="./images/expericne.png" alt="Icon 3" style="height: 200px; width: auto;">
+    <div class="counter" data-target="22">0</div>
+    <h3>Years of Experience</h3>
+  </div>
       </div>
     
 
@@ -386,6 +386,30 @@
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".counter");
+
+  counters.forEach(counter => {
+    counter.innerText = "0";
+
+    const updateCounter = () => {
+      const target = +counter.getAttribute("data-target");
+      const current = +counter.innerText.replace("+", "");
+      const increment = target / 100; // Adjust speed of counting here.
+
+      if (current < target) {
+        counter.innerText = `${Math.ceil(current + increment)}+`;
+        setTimeout(updateCounter, 20); // Adjust speed here.
+      } else {
+        counter.innerText = `${target}+`; // Ensure the final value matches the target.
+      }
+    };
+
+    updateCounter();
+  });
+});
+    </script>
     <script async src="//www.instagram.com/embed.js"></script>
     <!--coded by houdini-->
   </body>
